@@ -1,3 +1,5 @@
+![alt text](image.png)
+ *** Architecture  for DevOps Engineer ***
 # VaultPay
 
 Single Node.js app (Express + React/Vite/TypeScript) on port 3000, backed by PostgreSQL via `pg`.

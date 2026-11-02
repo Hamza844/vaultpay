@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bankapp
+  namespace: bankapp
+  labels:
+    app: bankapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bankapp
+  template:
+    metadata:
+      labels:
+        app: bankapp
+    spec:
+      containers:
+        - name: bankapp-frontend
+          image: hamza844/vaultpay:latest
+          ports:
+            - containerPort: 3000

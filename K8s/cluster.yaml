@@ -1,0 +1,22 @@
+apiVersion: kind.x-k8s.io/v1alpha4
+kind: Cluster
+name: vaultpay
+networking:
+  # Bind API server strictly to localhost to prevent external network exposure
+  apiServerAddress: "127.0.0.1"
+nodes:
+  - role: control-plane
+  - role: worker
+    kubeadmConfigPatches:
+      - |
+        kind: JoinConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            node-labels: "node-name=worker-1"
+  - role: worker
+    kubeadmConfigPatches:
+      - |
+        kind: JoinConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            node-labels: "node-name=worker-2"
